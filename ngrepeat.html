@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app="main">
+<head>
+    <meta charset="UTF-8" />
+    <title>ng-repeat</title>
+    <link rel="stylesheet" href="core.css" />
+    <style>.pract ul {padding-left:30px;} .pract ol {padding-left:50px;}</style>
+    <script src="angular.min.js"></script>
+    <script>
+    angular.module("main", []).controller("lovelivesong",
+    function($scope)
+    {
+        $scope.subunit =
+        [
+            { name:"Printemps",   memberof:"µ's"    },
+            { name:"Lily white",  memberof:"µ's"    },
+            { name:"BiBi",        memberof:"µ's"    },
+            { name:"CYaRon!",     memberof:"Aqours" },
+            { name:"AZALEA",      memberof:"Aqours" },
+            { name:"Guilty Kiss", memberof:"Aqours" }
+        ];
+    });
+    </script>
+</head>
+<body>
+    <div ng-controller="lovelivesong" class="pract">
+        <div>
+            <p>LoveLive! 裡面有 {{ subunit.length }} 個小隊</p>
+            <ul> <li ng-repeat="u in subunit"> {{ u.name }} 是 {{ u.memberof }} 的小隊 </li> </ul>
+        </div>
+    </div>
+    <div class="notes">
+        <ul>
+            <li>如果你要在清單裡面做 ng-repeat 的話，請記得是要在 li 元素做 ng-repeat。在 ul（ol）元素做會讓 li 元素迴圈於 1。</li>
+            <li>Ref: <a href="https://stackoverflow.com/questions/26747668/bullet-list-with-alphabet-in-ng-repeat">Bullet list with alphabet in ng-repeat</a></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>ng-</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var main = angular.module("main", []);
+    main.controller("example",
+    function($scope)
+    {
+        $scope.kiminonawa =
+        {
+            your : "My name is",
+            name : "Mitsuha"
+        };
+    });
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+</body>
+</html>

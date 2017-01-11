@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>ng-form</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var ang = angular.module("main", []);
+    ang.controller("Ctrl",
+    function($scope)
+    {
+        $scope.value1 = true;
+        $scope.value2 = 'YES';
+    });
+    
+    ang.controller("veget",
+    function($scope)
+    {
+        $scope.vget = { diary:true , egges:true }
+        $scope.resut = "尚未初始";
+        /*
+        $scope.resut = function( $scope.vget.diary , $scope.vget.egges )
+        {
+            if ( $scope.vget.diary==true && $scope.vget.egges==true ) { return "奶蛋素"; }
+            else if ( $scope.vget.diary==true ) { return "奶素"; }
+            else if ( $scope.vget.egges==true ) { return "蛋素"; }
+            else { return "純素"; }
+        };
+        /
+        if ( $scope.vget.diary === true && $scope.vget.egges==true )
+        {
+            $scope.resut = "奶蛋素";
+        }
+        else if ( $scope.vget.diary==true )
+        {
+            return "奶素";
+        }
+        else if ( $scope.vget.egges==true )
+        {
+            return "蛋素";
+        }
+        else
+        {
+            return "純素";
+        }
+        
+        $scope.resut = function( $scope.diary , $scope.egges )
+        {
+            if ( $scope.diary==true && $scope.egges==true ) { return "奶蛋素"; }
+            else if ( $scope.diary==true ) { return "奶素"; }
+            else if ( $scope.egges==true ) { return "蛋素"; }
+            else { return "純素"; }
+        };
+        */
+    });
+    
+    //
+    </script>
+</head>
+<body>
+    <form name="myForm" ng-controller="Ctrl" class="demos">
+        Value1: <input type="checkbox" ng-model="value1"> <br/>
+        Value2: <input type="checkbox" ng-model="value2"
+        ng-true-value="'YES'" ng-false-value="'No'"> <br/>
+        <tt>value1 = {{value1}}</tt><br/>
+        <tt>value2 = {{value2}}</tt><br/>
+    </form>
+    <form name="veget" ng-controller="veget" class="pract">
+        <label for="diary"> <input type="checkbox" ng-model="vget.diary" name="diary" > 吃乳製品？ </label>
+        <label for="egges"> <input type="checkbox" ng-model="vget.egges" name="egges" > 吃蛋製品？ </label>
+        {{ vget.diary }} {{ vget.egges }}
+    </form>
+    <form name="others" ng-controller="other">
+    </form>
+    
+    <div class="notes">
+        <p>ng-true-value 與 ng-false-value 要使用字串形式的話，必須有 <code>""</code> ，除非已經有變數</p>
+        <ul>
+            <li><a href="https://stackoverflow.com/questions/28327440/ngmodel-constexpr-error-in-my-angularjs-app-but-same-code-on-jsfiddle-is-good">Ref: ngModel : constexpr error in my angularjs app, but same code on jsfiddle is good</a></li>
+            <li><a href="https://docs.angularjs.org/error/ngModel/constexpr?p0=ngTrueValue&p1=YES">Error: ngModel:constexpr Non-Constant Expression</a></li>
+        </ul>
+    </div>
+    <div></div>
+</body>
+</html>

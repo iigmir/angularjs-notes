@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>ng-show, ng-hide and ng-init</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    angular.module("main", []).controller("mvc_explain",
+    function($scope)
+    {
+        $scope.hidari = function () { $scope.command = "←"; };
+        $scope.migi   = function () { $scope.command = "→"; };
+        $scope.aeim   = function () { $scope.command = "Ａ"; };
+        $scope.beei   = function () { $scope.command = "Ｂ"; };
+    });
+    </script>
+</head>
+<body>
+    <div ng-controller="mvc_explain">
+        <div class="demos">
+            <div>
+                Click me: <input type="checkbox" ng-model="checked"><br/>
+                Show: <span ng-show="checked">I show up when your checkbox is checked.</span> <br/>
+                Hide: <span ng-hide="checked">I hide when your checkbox is checked.</span>
+            </div>
+        </div>
+        <div class="pract">
+            <div>
+                展開中文說明 <input type="checkbox" ng-model="cec"><br/>
+                <div ng-hide="cec" class="msg_table"> 英文: John is at the tailor's ordering a suit.</div>
+                <div ng-show="cec" class="reply_msg_table"> 中文: 約翰在裁縫店訂一套西裝。</div>
+                <div ng-hide="cec" class="msg_table"> 英文: John is at the tailor's for a fitting. </div>
+                <div ng-show="cec" class="reply_msg_table"> 中文: 約翰正在裁縫店試衣。</div>
+            </div>
+        </div>
+        <div class="pract mvcstr">
+            <select ng-init=" mvc_arch='def' " ng-model="mvc_arch">
+                <option value="def">總覽</option>
+                <option value="mdl">與 Model 的交流</option>
+                <option value="vew">與 View 的交流</option>
+            </select>
+            
+            <br/>
+            <div class="model">Model ←→ Database</div>
+            <div ng-hide=" mvc_arch == 'vew'" ng-show="mvc_arch == 'mdl' || mvc_arch=='def' " >
+                <span>↑ ↓</span>
+            </div>
+            <br ng-hide="mvc_arch == 'mdl' || mvc_arch=='def' " ng-show=" mvc_arch == 'vew' "/>
+            
+            <div class="contr">Controller ←</div>
+            <div ng-hide="mvc_arch == 'mdl'" ng-show=" mvc_arch == 'vew' || mvc_arch=='def' ">
+                <span>↑ ↓</span>
+            </div>
+            
+            <br ng-hide="mvc_arch == 'vew' || mvc_arch=='def' " ng-show=" mvc_arch == 'mdl' "/>
+            <div class="views">View</div>
+        </div>
+        <div class="notes">
+            <ul>
+                <li>ng-hide 與 ng-show 會跟隨 ng-model 的行為。ng-init 會預先宣告某些變數。</li>
+                <li>
+                    <ul>
+                        <li>我在編寫 <code>.mvcstr</code> 的時候，發現 select 會出現一個空白 option。之後發現該空白是 undefined。</li>
+                        <li>去找了一下，發現是因為<a href="https://stackoverflow.com/questions/17892220/angularjs-and-select-default-selected-options-are-removed">沒有用 ng-init 定義 ng-model 的初始值</a>。</li>
+                        <li>如何解決？只要重新 ng-init 就好了。</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

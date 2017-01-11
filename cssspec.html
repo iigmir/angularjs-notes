@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>CSS 示例</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var main = angular.module("main", []);
+    main.controller("example",
+    function($scope)
+    {
+        $scope.kiminonawa =
+        {
+            your : "My name is",
+            name : "Mitsuha"
+        };
+    });
+    </script>
+</head>
+<body>
+    <div class="demos">
+        <p>這裡會展示從網路抓下來的東西程式</p>
+    </div>
+    <div class="pract">
+        <p>以上面的程式為基礎，寫出自己的版本</p>
+    </div>
+    <div class="notes">
+        <p>筆記、備忘之類的</p>
+    </div>
+</body>
+</html>

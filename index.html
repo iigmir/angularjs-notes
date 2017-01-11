@@ -1,0 +1,55 @@
+<!doctype html>
+<html ng-app="main">
+<head>
+    <meta charset="UTF-8" />
+    <title>AngularJS 筆記</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="angular.min.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+    <noscript>
+        本網站的主題 AngularJS 需要使用 JavaScript。
+        請選用支援 JavaScript 的瀏覽器、或開啟 JavaScript。
+        如果已開啟 JavaScript，請重新整理。
+    </noscript>
+    <header id="intro" ng-controller="intro">
+        <img
+        ng-init = "imgsrc=logo.wiki+logo.now"
+        ng-mouseover = "imgsrc=logo.wiki+logo.then"
+        ng-mouseout  = "imgsrc=logo.wiki+logo.now"
+        ng-src = "{{imgsrc}}"
+        alt="AngularJS logo"/>
+        
+        <h1
+        ng-mouseover = "ang_title=title.zh_tw"
+        ngFocus = "ang_title=title.zh_tw"
+        ng-mouseleave= "ang_title=title.en_gb">{{ ang_title }}</h1>
+    </header>
+    <main ng-controller="webpage">
+        <nav>
+            <h2> {{title}} </h2>
+            <ul>
+                <li ng-repeat="link in pract" title="{{ link.name }}" ng-click="webpage_load( $index )"> <a href="#">{{ link.name }}</a> </li>
+            </ul>
+            <h2>Reference</h2>
+            <ul>
+                <li><a href="http://ithelp.ithome.com.tw/articles/10132196">iT 邦幫忙</a></li>
+                <li><a href="http://abgne.tw/tag/angularjs/page/7">男丁格爾</a></li>
+                <li><a href="http://blog.darkthread.net/post-2014-06-11-angularjs-notes-1.aspx">黑暗執行緒</a></li>
+                <li><a href="https://docs.angularjs.org">angularjs.org</a></li>
+                <li><a href="https://www.gitbook.com/book/hairui219/learning_angular/details">hairui219</a></li>
+                <li><a href="https://github.com/xufei/blog">xufei</a></li>
+            </ul>
+        </nav>
+        <iframe src="{{webpage_pos.url}}">
+            <!--
+                我本來想用 ng-include，但是發現 CSS 會混在一起，很難處理。
+                所以最後選擇用 iframe 比較省事。
+            -->
+            <p>Your browser does not support iframes.</p>
+        </iframe>
+    </main>
+    <footer>Design and Build: iigmir | Host:example.com </footer>
+</body>
+</html>

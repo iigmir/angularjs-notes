@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>ng-checked</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var main = angular.module("main", []);
+    main.controller("pract",
+    function($scope)
+    {
+        $scope.kiminonawa = [{name:"Taki"},{name : "Mitsuha"},{name : "Miki",}];
+    });
+    </script>
+</head>
+<body>
+    <div ng-controller="pract" class="pract">
+        Check me to check both: <input type="checkbox" ng-model="master">
+        <br/>
+        <p ng-repeat="checkText in kiminonawa">
+        <input type="checkbox" ng-checked="master"> {{checkText.name}} </p>
+    </div>
+</body>
+</html>

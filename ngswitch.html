@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>ng-switch</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var ang = angular.module("main", []);
+    ang.controller('ExampleController', ['$scope', function($scope)
+    {
+        $scope.items = ['settings', 'home', 'options', 'other'];
+        $scope.selection = $scope.items[0];
+    }]);
+    
+    ang.controller("language", ['$scope', function($scope)
+    {
+        $scope.langs = ['English', 'Deutsch', '日本語', '中文'];
+        $scope.selec = $scope.langs[0];
+    }]);
+    </script>
+</head>
+<body>
+    <div ng-controller="ExampleController" class="demos">
+        <select ng-model="selection" ng-options="item for item in items"></select>
+        <code>selection={{selection}}</code>
+        <br/>
+        <div class="animate-switch-container" ng-switch on="selection">
+            <div class="animate-switch" ng-switch-when="settings|options" ng-switch-when-separator="|">Settings Div</div>
+            <div class="animate-switch" ng-switch-when="home">Home Span</div>
+            <div class="animate-switch" ng-switch-default>default</div>
+        </div>
+    </div>
+    <div ng-controller="language" class="pract">
+        <select ng-model="selec" ng-options="lang for lang in langs"></select>
+        <code>{{selec}}</code>
+        <br/>
+        <div ng-switch on="selec">
+            <div ng-switch-when="English"> English is a West Germanic language that was first spoken in early medieval England and is now a global lingua franca. </div>
+            <div ng-switch-when="Deutsch">Deutsch, gehört zur westgermanischen Gruppe des germanischen Zweiges der indogermanischen Sprachen.</div>
+            <div ng-switch-when="日本語">日本語は、主に日本国内や日本人同士の間で使われている言語である。</div>
+            <div ng-switch-when="中文">中文的文字系統——漢字是一種意音語言，表意的同時也具一定的表音功能。</div>
+            <div ng-switch-default>Languages</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>timeout use</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var main = angular.module("main", []);
+    main.controller("demos",
+    function($scope)
+    {
+        $scope.countDown = 10;    
+        var timer = setInterval(function()
+        {
+            $scope.countDown--;
+            $scope.$apply();
+            // console.log($scope.countDown);
+        }, 1000); 
+      
+        $scope.stop = function()
+        {
+            window.clearInterval(timer);
+        };
+    });
+    </script>
+</head>
+<body>
+    <div ng-controller="demos" class="demos">
+        {{countDown}} <button ng-click="stop()">Stop</button>    
+    </div>
+</body>
+</html>

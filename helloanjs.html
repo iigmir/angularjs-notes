@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello Angular JS and ng-model</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+</head>
+<body>
+    <div class="demos">
+        <input type="text" ng-model="name" placeholder="Enter a name here" />
+        <h1>Hello {{ name }}!!</h1>
+    </div>
+    
+    <div class="pract greet">
+        <input type="text" ng-model="ipt_name" placeholder="Enter a name here" />
+        <h1>你好{{ ipt_name }}！</h1>
+        <input type="text" ng-model="greet_names" placeholder="輸入名字" />
+        <input type="text" ng-model="greet_title" placeholder="輸入稱謂" />
+        <input type="text" ng-model="greet_texts" placeholder="輸入訊息" />
+        <h1>{{ greet_names || "佐藤" }} {{ greet_title || "さん" }}、{{ greet_texts || "おはようございます" }}！</h1>
+    </div>
+    
+    <div class="notes">
+        <ul>
+            <li>要用兩個大括弧顯示字串的話，請不要忘記用上雙引號</li>
+            <li><code>||</code>：如果無法獲得 <code>ng-model</code> 的值，就可以預先顯示 <code>||</code> 後面的字串</li>
+        </ul>
+    </div>
+</body>
+</html>

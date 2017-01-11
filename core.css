@@ -1,0 +1,36 @@
+body,body * {margin:0;padding:0;}
+body,body > div {padding:10px;}
+
+.demos,.pract,.notes
+{
+    width:720px;
+    margin-bottom:35px;
+    padding:10px;
+    /* shadow effects */
+    -webkit-box-shadow: 0px 12px 12px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow   : 0px 12px 12px 0px rgba(0,0,0,0.75);
+    box-shadow        : 0px 12px 12px 0px rgba(0,0,0,0.75);
+}
+
+.demos::before,
+.pract::before,
+.notes::before
+{
+    border-bottom: 2px solid #FFF;
+    border-bottom-width: 1px;
+    display: block;
+}
+
+.demos{background-color:#FD4DB0;}
+.demos::before{content: "網站複製貼上過來的示例";}
+
+.pract{background-color:#5DC1E9;}
+.pract::before{content: "換我來練習";}
+
+.notes{background-color:#FFFFA5;}
+.notes::before
+{
+    content: "學習筆記";
+    border-bottom-color:#000;
+}
+.notes ol,.notes ul{padding-left:50px;}

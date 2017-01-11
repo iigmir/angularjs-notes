@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>ng-change</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var main = angular.module("main", []);
+    main.controller("ExampleController",
+    function($scope)
+    {
+        $scope.counter = 0;
+        $scope.change = function()
+        {
+            $scope.counter++;
+        };
+    });
+    
+    main.controller("mycont",
+    function($scope)
+    {
+        $scope.text = "1";
+        $scope.binloop = function()
+        {
+            if ( $scope.text.length%2 == 0)
+            {
+                $scope.text += "1";
+            }
+            else
+            {
+                $scope.text += "0";
+            }
+        };
+    });
+    </script>
+</head>
+<body>
+    <div ng-controller="ExampleController" class="demos">
+        <input type="checkbox" ng-model="confirmed" ng-change="change()" id="ng-change-example1" />
+        <input type="checkbox" ng-model="confirmed" id="ng-change-example2" />
+        <label for="ng-change-example2">Confirmed</label><br />
+        <tt>debug = {{confirmed}}</tt><br/>
+        <tt>counter = {{counter}}</tt><br/>
+    </div>
+    <div ng-controller="mycont" class="pract">
+        GENERATE: <input type="checkbox" ng-model="zero" ng-change="binloop()" />
+        <br />
+        <p>{{text}}</p>
+        <p>{{zero}}</p>
+    </div>
+</body>
+</html>

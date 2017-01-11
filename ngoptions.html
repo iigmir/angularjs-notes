@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>ng-options</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var ang = angular.module("main", []);
+    ang.controller("lotteryCtrl",
+    function($scope)
+    {
+        $scope.lotteryModel =
+        [{
+          id: 1,
+          ProductName: '威力彩'
+        },{
+          id: 2,
+          ProductName: '今彩539'
+        },{
+          id: 3,
+          ProductName: '大樂透'
+        }];
+    });
+    
+    ang.controller("lang_cont",
+    function($scope)
+    {
+        $scope.langs_in_scpoe =
+        [{
+          id: 1,
+          langeuage: 'AngularJs',
+          desc:'AngularJS is a front-end web application framework mainly maintained by Google'
+        },{
+          id: 2,
+          langeuage: 'React',
+          desc:'React is an  JavaScript library for data rendered as HTML maintained by Facebook'
+        },{
+          id: 3,
+          langeuage: 'jQuery',
+          desc:'jQuery is a JavaScript library designed to simplify the client-side scripting of HTML'
+        }];
+    });
+    </script>
+</head>
+<body>
+    <form name="myForm" ng-controller="lotteryCtrl" class="demos">
+        <select ng-model="Select1" ng-options="lottery.ProductName for lottery in lotteryModel">
+            <option value="">-- 請選擇 --</option>
+        </select>
+        <p>{{ Select1.ProductName }}</p>
+    </form>
+    <form name="lang_for_html_name" ng-controller="lang_cont" class="pract">
+        <select ng-model="lang_model" ng-options="langs_in_scpoe.langeuage for langs_in_scpoe in langs_in_scpoe">
+            <option value="">Select...</option>
+        </select>
+        <p>{{ lang_model.desc }}</p>
+    </form>
+</body>
+</html>

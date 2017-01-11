@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <meta charset=utf-8 />
+    <title>ng-controller</title>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script> -->
+    <script src="../angular.min.js"></script>
+    <script>
+    function TodoCrtl($scope) {
+        $scope.name = "Anna";
+    }
+    </script>
+</head>
+<body>
+    <p ng-controller="TodoCrtl">My name is {{ name }}!</p>
+    <p>1.0.7 與 1.6.1 差很多</p>
+    &lt;p&gt;
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>ng-include</title>
+    <link rel="stylesheet" href="../core.css" />
+    <script src="../angular.min.js"></script>
+    <script>
+    var main = angular.module("main", []);
+    
+    main.controller("example",
+    function($scope)
+    {
+        $scope.templates =
+        [
+            { name: 'template1.html', url: 'template1.html'},
+            { name: 'template2.html', url: 'template2.html'}
+        ];
+        $scope.template = $scope.templates[0];
+    });
+    
+    main.controller("practice",
+    function($scope)
+    {
+        $scope.cros =
+        [
+            { name: '一個資料', url: 'pract1.txt'},
+            { name: '兩個資料', url: 'pract2.html'},
+            { name: '跨資料夾：下層', url: 'minecraft/nether.html'},
+            { name: '跨資料夾：上層', url: '../cssspec.html'}
+        ];
+        $scope.cros_point = $scope.cros[0];
+        $scope.cros_change = function( p_cc_ipt )
+        {   // https://stackoverflow.com/questions/23110425/angularjs-ng-repeat-and-index-provides-parsing-error
+            // console.log(p_cc_ipt);
+            $scope.cros_point = $scope.cros[p_cc_ipt];
+        };
+    });
+    </script>
+</head>
+<body>
+    <div ng-controller="example" class="demos">
+        <select ng-model="template" ng-options="t.name for t in templates">
+            <option value="">(blank)</option>
+        </select>
+        <div ng-include="template.url"></div>
+    </div>
+    <div ng-controller="practice" class="pract">
+        <div>
+            <button ng-repeat="c in cros" ng-click="cros_change( $index )">
+            {{c.name}}
+            </button>
+        </div>
+        <div ng-include="cros_point.url"></div>
+    </div>
+    <div class="notes">
+        <ol>
+            <li><a href="https://stackoverflow.com/questions/23110425/angularjs-ng-repeat-and-index-provides-parsing-error">不要在 ng-click 的 function 裡面用大括弧。</a>不要問我為什麼。</li>
+            <li>ng-include 要載入整個網頁的話，似乎會出事？</li>
+        </ol>
+    </div>
+</body>
+</html>
