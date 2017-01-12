@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>ng-if</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var main = angular.module("main", []);
+    main.controller("demos",function($scope){});
+    
+    main.controller("pract",
+    function($scope)
+    {
+        $scope.diary = true;
+        $scope.egges = true;
+    });
+    </script>
+</head>
+<body>
+    <div class="demos" ng-controller="demos">
+        <label>
+            Click me:
+            <input type="checkbox" ng-model="checked" ng-init="checked=true" />
+        </label><br/>
+        Show when checked:
+        <span ng-if="checked">
+          This is removed when the checkbox is unchecked.
+        </span>
+    </div>
+    <div class="pract" ng-controller="pract">
+        <label for="diary"> <input type="checkbox" ng-model="diary" name="diary" > 吃乳製品？ </label>
+        <label for="egges"> <input type="checkbox" ng-model="egges" name="egges" > 吃蛋製品？ </label>
+        <p ng-if="diary==true && egges==true">蛋奶素</p>
+        <p ng-if="diary==true && egges==false">奶素</p>
+        <p ng-if="diary==false && egges==true">蛋素</p>
+        <p ng-if="diary==false && egges==false">純素</p>
+    </div>
+</body>
+</html>

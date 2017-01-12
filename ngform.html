@@ -13,15 +13,6 @@
         $scope.value1 = true;
         $scope.value2 = 'YES';
     });
-    
-    ang.controller("veget",
-    function($scope)
-    {
-        $scope.vget = { diary:true , egges:true };
-        $scope.resut = "尚未初始";
-    });
-    
-    //
     </script>
 </head>
 <body>
@@ -32,14 +23,6 @@
         <tt>value1 = {{value1}}</tt><br/>
         <tt>value2 = {{value2}}</tt><br/>
     </form>
-    <form name="veget" ng-controller="veget" class="pract">
-        <label for="diary"> <input type="checkbox" ng-model="vget.diary" name="diary" > 吃乳製品？ </label>
-        <label for="egges"> <input type="checkbox" ng-model="vget.egges" name="egges" > 吃蛋製品？ </label>
-        {{ vget.diary }} {{ vget.egges }}
-    </form>
-    <form name="others" ng-controller="other">
-    </form>
-    
     <div class="notes">
         <p>ng-true-value 與 ng-false-value 要使用字串形式的話，必須有 <code>""</code> ，除非已經有變數</p>
         <ul>

@@ -33,6 +33,7 @@ ang.controller('webpage', function($scope)
         { name: "ng-options", url: "ngoptions.html" },
         { name: "ng-repeat", url: "ngrepeat.html" },
         { name: "ng-switch", url: "ngswitch.html" },
+        { name: "ng-if", url: "ngif.html" },
         { name: "show and hide", url: "showandhide.html" },
         { name: "timeout", url: "timeout.html" },
         { name: "實做：民國西元換算器", url: "practice1.html" }
