@@ -2,24 +2,32 @@
 <html ng-app="main">
 <head>
     <meta charset=utf-8 />
-    <title>practice:</title>
+    <title>practice:mingo to grego</title>
     <link rel="stylesheet" href="core.css" />
     <script src="angular.min.js"></script>
     <script>
     var main = angular.module("main", []);
-    main.controller("example",
+    main.controller("year_exchange",
     function($scope)
     {
-        $scope.kiminonawa =
-        {
-            your : "My name is",
-            name : "Mitsuha"
-        };
+        $scope.mingo = 100;
+        $scope.grego = 2000;
     });
     </script>
 </head>
 <body>
-    <div></div>
+    <div class="pract" ng-controller="year_exchange">
+        <fieldset>
+            <legend>Mingo to Grego:</legend>
+            Mingo Year: <input type="number" ng-model="mingo" />
+            <p>Grego Year: {{1911+mingo}}</p>
+        </fieldset>
+        <fieldset>
+            <legend>Grego to mingo:</legend>
+            Mingo Year: <input type="number" ng-model="grego" />
+            <p>Grego Year: {{grego-1911}}</p>
+        </fieldset>
+    </div>
     <div></div>
 </body>
 </html>
