@@ -10,23 +10,28 @@
     main.controller("year_exchange",
     function($scope)
     {
+        // init value
         $scope.mingo = 100;
         $scope.grego = 2000;
+        // calc value
+        $scope.mingo_to_grego = 1911 + $scope.mingo;
+        $scope.grego_to_mingo = $scope.grego - 1911;
     });
     </script>
 </head>
 <body>
     <div class="pract" ng-controller="year_exchange">
         <fieldset>
-            <legend>Mingo to Grego:</legend>
-            Mingo Year: <input type="number" ng-model="mingo" />
-            <p>Grego Year: {{1911+mingo}}</p>
+            <legend>民國換算西元：</legend>
+            輸入民國年：<input type="number" ng-model="mingo" />
+            <p>西元 {{ 1911 + mingo }} 年</p>
         </fieldset>
         <fieldset>
-            <legend>Grego to mingo:</legend>
-            Mingo Year: <input type="number" ng-model="grego" />
-            <p>Grego Year: {{grego-1911}}</p>
+            <legend>西元換算民國：</legend>
+            輸入西元年：<input type="number" ng-model="grego" />
+            <p>民國 {{ grego-1911 }} 年</p>
         </fieldset>
+         
     </div>
     <div></div>
 </body>

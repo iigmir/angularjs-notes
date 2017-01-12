@@ -34,3 +34,5 @@ body,body > div {padding:10px;}
     border-bottom-color:#000;
 }
 .notes ol,.notes ul{padding-left:50px;}
+
+fieldset{padding:10px}
