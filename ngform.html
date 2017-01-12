@@ -17,42 +17,8 @@
     ang.controller("veget",
     function($scope)
     {
-        $scope.vget = { diary:true , egges:true }
+        $scope.vget = { diary:true , egges:true };
         $scope.resut = "尚未初始";
-        /*
-        $scope.resut = function( $scope.vget.diary , $scope.vget.egges )
-        {
-            if ( $scope.vget.diary==true && $scope.vget.egges==true ) { return "奶蛋素"; }
-            else if ( $scope.vget.diary==true ) { return "奶素"; }
-            else if ( $scope.vget.egges==true ) { return "蛋素"; }
-            else { return "純素"; }
-        };
-        /
-        if ( $scope.vget.diary === true && $scope.vget.egges==true )
-        {
-            $scope.resut = "奶蛋素";
-        }
-        else if ( $scope.vget.diary==true )
-        {
-            return "奶素";
-        }
-        else if ( $scope.vget.egges==true )
-        {
-            return "蛋素";
-        }
-        else
-        {
-            return "純素";
-        }
-        
-        $scope.resut = function( $scope.diary , $scope.egges )
-        {
-            if ( $scope.diary==true && $scope.egges==true ) { return "奶蛋素"; }
-            else if ( $scope.diary==true ) { return "奶素"; }
-            else if ( $scope.egges==true ) { return "蛋素"; }
-            else { return "純素"; }
-        };
-        */
     });
     
     //
