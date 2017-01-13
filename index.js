@@ -24,18 +24,18 @@ ang.controller('webpage', function($scope)
         { name: "CSS 示例", url: "cssspec.html" },
         { name: "Hello AngularJS", url: "helloanjs.html" },
         { name: "ng-controller", url: "ng-controller/index.html" },
-        { name: "ng-include", url: "ng-include/index.html" },
-        { name: "ng-click", url: "ngclick.html" },
         { name: "ng-change", url: "ngchange.html" },
         { name: "ng-checked", url: "ngchecked.html" },
         { name: "ng-click", url: "ngclick.html" },
+        { name: "ng-include", url: "ng-include/index.html" },
         { name: "ng-form", url: "ngform.html" },
         { name: "ng-options", url: "ngoptions.html" },
         { name: "ng-repeat", url: "ngrepeat.html" },
         { name: "ng-switch", url: "ngswitch.html" },
         { name: "ng-if", url: "ngif.html" },
-        { name: "show and hide", url: "showandhide.html" },
+        { name: "ng-show, ng-hide", url: "showandhide.html" },
         { name: "timeout", url: "timeout.html" },
+        { name: "ng-bind", url: "ngbind.html" },
         { name: "實做：民國西元換算器", url: "practice1.html" }
     ];
     $scope.webpage_pos = $scope.pract[0];

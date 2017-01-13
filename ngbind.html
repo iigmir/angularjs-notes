@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>ng-bind</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var main = angular.module("main", []);
+    main.controller("example",
+    function($scope)
+    {
+        $scope.name = 'Anna';
+        $scope.crte = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+    });
+    </script>
+</head>
+<body>
+    <div ng-controller="example" class="demos">
+        Enter name: <input type="text" ng-model="name"><br>
+        Hello <span ng-bind="name"></span>!
+    </div>
+    <div ng-controller="example" class="pract">
+        <p ng-bind="crte">Javascript currently unavailable</p>
+        <p>如果要測試效果，請停用 JavaScript。</p>
+    </div>
+    <div class="notes">
+        <ul>
+            <li>ng-bind 就等於元件內的大括弧。</li>
+            <li>把綁定的變數放在 ng-bind 裡面，效果和放在元件內的大括弧一樣。</li>
+            <li>如果要測試效果，請使用 <a href="http://chrispederick.com/work/web-developer/">Web Developer</a> 套件裡面的「停用 JavaScript」。</li>
+        </ul>
+    </div>
+</body>
+</html>

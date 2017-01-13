@@ -8,7 +8,7 @@
     <script src="index.js"></script>
 </head>
 <body>
-    <noscript>
+    <noscript style="margin-bottom:10px;">
         本網站的主題 AngularJS 需要使用 JavaScript。
         請選用支援 JavaScript 的瀏覽器、或開啟 JavaScript。
         如果已開啟 JavaScript，請重新整理。
@@ -19,18 +19,23 @@
         ng-mouseover = "imgsrc=logo.wiki+logo.then"
         ng-mouseout  = "imgsrc=logo.wiki+logo.now"
         ng-src = "{{imgsrc}}"
+        src="https://upload.wikimedia.org/wikipedia/commons/c/ca/AngularJS_logo.svg"
         alt="AngularJS logo"/>
         
         <h1
         ng-mouseover = "ang_title=title.zh_tw"
         ngFocus = "ang_title=title.zh_tw"
-        ng-mouseleave= "ang_title=title.en_gb">{{ ang_title }}</h1>
+        ng-mouseleave= "ang_title=title.en_gb"
+        ng-bind="ang_title">AngularJS</h1>
     </header>
     <main ng-controller="webpage">
         <nav>
-            <h2> {{title}} </h2>
+            <h2 ng-bind="title"> Practice </h2>
             <ul>
-                <li ng-repeat="link in pract" title="{{ link.name }}" ng-click="webpage_load( $index )"> <a href="#">{{ link.name }}</a> </li>
+                <li ng-repeat="link in pract" ng-click="webpage_load( $index )"
+                title="{{ link.name }}">
+                    <a href="#" ng-bind="link.name"> 本網站的主題 AngularJS 需要使用 JavaScript。 </a>
+                </li>
             </ul>
             <h2>Reference</h2>
             <ul>
