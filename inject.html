@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>Dependency Injection</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var main = angular.module("main", []);
+    
+    main.controller("example", function($scope)
+    {
+        $scope.kiminonawa =
+        {
+            your : "My name is",
+            name : "Mitsuha"
+        };
+    });
+    
+    main.controller("wrong", function(wrong)
+    {
+        wrong.result = "It's impossbile to show this text";
+    });
+    
+    main.controller("oceans",["$scope", function(mmc)
+    {
+        mmc.sanyo =["Atlantic","Indian","Pacific"];
+    }]);
+    
+    main.controller("ll",["$scope",function(l){l.l= "You can't stop the Littles cause the Littles don't stop";}]);
+    // ll 控制器只是極限測試之類的東西
+    </script>
+</head>
+<body>
+    <div class="pract">
+        <p ng-controller="example">{{kiminonawa.your}} {{kiminonawa.name}}</p>
+        <ul ng-controller="oceans" style="margin:25px">
+            <li  ng-repeat="s in sanyo"> {{s}} </li>
+        </ul>
+        <p ng-controller="ll"> {{l}} </p>
+        <p ng-controller="wrong"> {{result}} </p>
+    </div>
+    <div class="notes">
+        <p>我學到目前為止都像 example 這控制器的寫法：</p>
+        <pre>
+main.controller("example", function($scope)
+{
+    $scope.kiminonawa =
+    {
+        your : "My name is",
+        name : "Mitsuha"
+    };
+});
+</pre>
+        <p>但是這樣的話，每次都要寫很煩人的 <code>$scope</code> 怎麼辦？</p>
+        <p>「改變數就好啦」</p>
+        <p>以前這麼想著，然後界寫了像是 wrong 這控制器的寫法：</p>
+        <pre>
+main.controller("wrong", function(wrong)
+{
+    wrong.result = "It's impossbile to show this text";
+});
+</pre>
+        <p>但是真的套上去，不會有任何效果發生。（嗯，有啦。<a href="https://docs.angularjs.org/error/$injector/unpr">主控台會出現連結</a>）</p>
+        <p>很明顯是因為 Angular 會用 <code>$scope</code> 處理事務──幸好，Angular 提供了 Dependency Injection 這種用法：</p>
+        <pre>
+main.controller("oceans",["$scope", function(mmc)
+{
+    mmc.sanyo =["Atlantic","Indian","Pacific"];
+}]);
+</pre>
+        <p>原本只有一個 <code>function($scope){}</code> 變成了 <code>["$scope", function(){}</code>。</p>
+        <p>這樣，就可以在 function 裡面使用變數了。</p>
+        <p>雖然，原理還不是很清楚……</p>
+    </div>
+</body>
+</html>

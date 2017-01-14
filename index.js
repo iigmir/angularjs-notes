@@ -37,7 +37,8 @@ ang.controller('webpage', function($scope)
         { name: "timeout", url: "syntax/timeout.html" },
         { name: "ng-bind", url: "syntax/ngbind.html" },
         { name: "ng-style", url: "syntax/ngstyle.html" },
-        { name: "實做：民國西元換算器", type:"practice" ,url: "practice1.html" }
+        { name: "Dependency Injection", url: "inject.html" },
+        { name: "實做：民國西元換算器", url: "practice1.html" }
     ];
     $scope.webpage_pos = $scope.pract[0];
     $scope.webpage_load = function( ipt )
