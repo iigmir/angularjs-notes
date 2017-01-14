@@ -36,6 +36,7 @@ ang.controller('webpage', function($scope)
         { name: "ng-show, ng-hide", url: "showandhide.html" },
         { name: "timeout", url: "timeout.html" },
         { name: "ng-bind", url: "ngbind.html" },
+        { name: "ng-style", url: "ngstyle.html" },
         { name: "實做：民國西元換算器", url: "practice1.html" }
     ];
     $scope.webpage_pos = $scope.pract[0];

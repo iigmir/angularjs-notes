@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>ng-style</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var main = angular.module("main", []);
+    main.controller("datas",
+    function($scope)
+    {
+        $scope.set_color = function ()
+        {
+            return { color: "blue" };
+        };
+    });
+    main.controller("pract",
+    function($scope)
+    {
+        $scope.redhat = function ()
+        {
+            return {
+                width:"50px",
+                marginTop:"15px",
+                borderTop:"medium solid red",
+                fontWeight:"bold"
+            };
+        };
+    });
+    </script>
+</head>
+<body>
+    <div ng-controller="datas" class="demos"><p ng-style="set_color()">Anna</p></div>
+    <div ng-controller="pract" class="pract">
+        <p ng-style="redhat()">redhat</p>
+    </div>
+    <div class="notes">
+        <ul>
+            <li>大括弧與 return 必須同一行，不可換行，不然<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Stmt_after_return">辨識會出問題</a>。</li>
+            <li>JavaScript 的減號 <code>-</code> 不是合法的變數名──那要怎麼套用如 <code>background-color</code> 或 <code>text-align</code> 的東西？答案是去除減號後，第二個單詞首字以大寫表示：例如 <code>backgroundColor</code> 或 <code>textAlign</code>。</li>
+        </ul>
+    </div>
+</body>
+</html>
