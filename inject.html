@@ -41,7 +41,7 @@
         <p ng-controller="wrong"> {{result}} </p>
     </div>
     <div class="notes">
-        <p>我學到目前為止都像 example 這控制器的寫法：</p>
+        <p>我學到目前為止都像 <code>example</code> 這控制器的寫法：</p>
         <pre>
 main.controller("example", function($scope)
 {
@@ -53,8 +53,7 @@ main.controller("example", function($scope)
 });
 </pre>
         <p>但是這樣的話，每次都要寫很煩人的 <code>$scope</code> 怎麼辦？</p>
-        <p>「改變數就好啦」</p>
-        <p>以前這麼想著，然後界寫了像是 wrong 這控制器的寫法：</p>
+        <p>「改變數就好啦」──我於是寫了像 <code>wrong</code> 這控制器的寫法：</p>
         <pre>
 main.controller("wrong", function(wrong)
 {
@@ -62,7 +61,8 @@ main.controller("wrong", function(wrong)
 });
 </pre>
         <p>但是真的套上去，不會有任何效果發生。（嗯，有啦。<a href="https://docs.angularjs.org/error/$injector/unpr">主控台會出現連結</a>）</p>
-        <p>很明顯是因為 Angular 會用 <code>$scope</code> 處理事務──幸好，Angular 提供了 Dependency Injection 這種用法：</p>
+        <p>很明顯是因為 Angular 會用 <code>$scope</code> 處理事務。</p>
+        <p>幸好，Angular 提供了 Dependency Injection 這種用法：</p>
         <pre>
 main.controller("oceans",["$scope", function(mmc)
 {
@@ -70,7 +70,7 @@ main.controller("oceans",["$scope", function(mmc)
 }]);
 </pre>
         <p>原本只有一個 <code>function($scope){}</code> 變成了 <code>["$scope", function(){}</code>。</p>
-        <p>這樣，就可以在 function 裡面使用變數了。</p>
+        <p>這樣，就可以在 <code>function</code> 裡面使用變數了。</p>
         <p>雖然，原理還不是很清楚……</p>
     </div>
 </body>
