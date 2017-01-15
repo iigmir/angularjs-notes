@@ -33,7 +33,7 @@ ang.controller('webpage', function($scope)
         { name: "ng-repeat", url: "syntax/ngrepeat.html" },
         { name: "ng-switch", url: "syntax/ngswitch.html" },
         { name: "ng-if", url: "syntax/ngif.html" },
-        { name: "ng-show, ng-hide", url: "syntax/showandhide.html" },
+        { name: "ng-show, ng-hide", url: "syntax/ngshowandhide.html" },
         { name: "timeout", url: "syntax/timeout.html" },
         { name: "ng-bind", url: "syntax/ngbind.html" },
         { name: "ng-style", url: "syntax/ngstyle.html" },
