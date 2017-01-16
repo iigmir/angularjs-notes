@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>directive</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var main = angular.module("main", []);
+    main.controller('naomi', ['$scope', function($scope)
+    {
+        $scope.customer = { name: 'Naomi', address: '1600 Amphitheatre' };
+    }])
+    main.directive("myCustomer", function()
+    { return { template: "Name: {{customer.name}} Address: {{customer.address}}" }; });
+    
+    main.controller("Controller", ["$scope", function(date_input)
+    {
+        date_input.format = "d/MMM/yyyy HH:mm:ss";
+        date_input.input_extended={ "width" : "180px" };
+    }]);
+    
+    main.directive('myCurrentTime', ['$interval', 'dateFilter',
+    function($interval, dateFilter)
+    {
+        function link(scope, element, attrs)
+        {
+            var format, timeoutId;
+            function updateTime() { element.text(dateFilter(new Date(), format)); }
+            scope.$watch( attrs.myCurrentTime,
+                          function(value) { format = value; updateTime(); });
+            element.on('$destroy', function() { $interval.cancel(timeoutId); });
+            // start the UI update process; save the timeoutId for canceling
+            timeoutId = $interval(function() { updateTime(); }, 1000); // update DOM
+        }
+        return { link: link };
+    }]);
+    
+    main.controller("music", ["$scope", function(music_ipt)
+    {
+        music_ipt.prefix = "https://upload.wikimedia.org/wikipedia/commons/";
+        music_ipt.list =
+        [
+            {name:"Traditional Scottish music",group:"european",src:"4/4f/ScottishCeltic.ogg"},
+            {name:"陽關三疊",group:"eastern asian",src:"6/60/Guqin-Yangguan_Sandie.ogg"},
+            {name:"Der Hölle Rache kocht in meinem Herzen",group:"european",src:"7/7d/Der_Hoelle_Rache.ogg"},
+            {name:"The Stars and Stripes Forever",group:"american",src:"5/59/The_Stars_and_Stripes_Forever_-_U.S._Navy_Band.ogg"},
+        ];
+        // music_ipt.pos = music_ipt.list[0];
+    }]);
+    main.directive("audioPlayer", function()
+    {
+        return {
+            restrict: "E",
+            link: function(scope, element, attr)
+            {   // ng-change
+                var player = element.children("#player");
+                console.log(player);
+                player.on("ended", function()
+                {
+                    console.log("Loop");
+                    player[0].play();
+                });
+            }
+        };
+    });
+    </script>
+</head>
+<body>
+    <div ng-controller="naomi" class="demos"> <div my-customer></div> </div>
+    <div ng-controller="Controller" class="demos">
+        Date format: <input ng-model="format" ng-style="input_extended">
+        <br />
+        Current time is: <span my-current-time="format"></span>
+    </div>
+    <div ng-controller="music" class="pract">
+        <select ng-model="lst"
+        ng-options="l.name group by l.group for l in list">
+            <option value=""> -- 請選擇 -- </option>
+        </select>
+        <p> {{pos.name}} </p>
+        <audio id="player" controls audio-player="lst" src="{{prefix}}{{lst.src}}"> </audio>
+    </div>
+</body>
+</html>
