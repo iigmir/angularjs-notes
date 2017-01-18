@@ -48,20 +48,26 @@
         ];
         // music_ipt.pos = music_ipt.list[0];
     }]);
-    main.directive("audioPlayer", function()
+    main.directive("ngAudioPlayer", function()
     {
+        var player_behavior = function(scope, elem, attr)
+        {   // ng-change
+        // https://stackoverflow.com/questions/30758454/angularjs-cannot-get-my-directive-working
+            var player = elem.children("#player");
+            console.log(player);
+            player.on("changed", function()
+            {
+                console.log("Changed");
+            });
+            
+            player.on("ended", function()
+            {
+                console.log("Loop");
+                player[0].play();
+            });
+        }
         return {
-            restrict: "E",
-            link: function(scope, element, attr)
-            {   // ng-change
-                var player = element.children("#player");
-                console.log(player);
-                player.on("ended", function()
-                {
-                    console.log("Loop");
-                    player[0].play();
-                });
-            }
+            restrict: "EA", link: player_behavior
         };
     });
     </script>
@@ -79,7 +85,13 @@
             <option value=""> -- 請選擇 -- </option>
         </select>
         <p> {{pos.name}} </p>
-        <audio id="player" controls audio-player="lst" src="{{prefix}}{{lst.src}}"> </audio>
+        <audio id="player" controls ng-audio-player="lst" src="{{prefix}}{{lst.src}}"> </audio>
+    </div>
+    <div class="notes">
+        <ul>
+            <li><a href="http://exile1030-blog.logdown.com/posts/167848-custom-angularjs-directive-1">自訂 AngularJs Directive (1) </a></li>
+            <li><a href="http://exile1030-blog.logdown.com/posts/168283-customizing-the-angularjs-directive-2">自訂 AngularJs Directive (2) </a></li>
+        </ul>
     </div>
 </body>
 </html>
