@@ -46,23 +46,25 @@
             {name:"Der Hölle Rache kocht in meinem Herzen",group:"european",src:"7/7d/Der_Hoelle_Rache.ogg"},
             {name:"The Stars and Stripes Forever",group:"american",src:"5/59/The_Stars_and_Stripes_Forever_-_U.S._Navy_Band.ogg"},
         ];
-        // music_ipt.pos = music_ipt.list[0];
     }]);
     main.directive("ngAudioPlayer", function()
     {
+        var player_interface = '<audio id="player" controls ng-src="{{prefix}}{{lst.src}}"></audio>';
         var player_behavior = function(scope, elem, attr)
         {   // ng-change
         // https://stackoverflow.com/questions/30758454/angularjs-cannot-get-my-directive-working
             var player = elem.children("#player");
+            var elem_player = elem[0];
             console.log(player);
             player.on("ended", function()
             {
                 console.log("Loop");
-                player[0].play();
             });
         }
         return {
-            restrict: "EA", link: player_behavior
+            restrict: "EA",
+            template: player_interface,
+            link: player_behavior
         };
     });
     </script>
@@ -79,8 +81,7 @@
             <option value=""> -- 請選擇 -- </option>
         </select>
         <p> {{lst.name}} </p>
-        <audio id="player" controls ng-audio-player="lst" src="{{prefix}}{{lst.src}}">
-        </audio>
+        <ng-audio-player></ng-audio-player>
     </div>
     <div class="notes">
         <ul>
