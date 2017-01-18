@@ -55,11 +55,6 @@
         // https://stackoverflow.com/questions/30758454/angularjs-cannot-get-my-directive-working
             var player = elem.children("#player");
             console.log(player);
-            player.on("changed", function()
-            {
-                console.log("Changed");
-            });
-            
             player.on("ended", function()
             {
                 console.log("Loop");
@@ -80,12 +75,12 @@
         Current time is: <span my-current-time="format"></span>
     </div>
     <div ng-controller="music" class="pract">
-        <select ng-model="lst"
-        ng-options="l.name group by l.group for l in list">
+        <select ng-model="lst" ng-options="l.name group by l.group for l in list">
             <option value=""> -- 請選擇 -- </option>
         </select>
-        <p> {{pos.name}} </p>
-        <audio id="player" controls ng-audio-player="lst" src="{{prefix}}{{lst.src}}"> </audio>
+        <p> {{lst.name}} </p>
+        <audio id="player" controls ng-audio-player="lst" src="{{prefix}}{{lst.src}}">
+        </audio>
     </div>
     <div class="notes">
         <ul>
