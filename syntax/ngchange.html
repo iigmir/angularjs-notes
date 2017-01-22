@@ -3,8 +3,8 @@
 <head>
     <meta charset=utf-8 />
     <title>ng-change</title>
-    <link rel="stylesheet" href="core.css" />
-    <script src="angular.min.js"></script>
+    <link rel="stylesheet" href="../core.css" />
+    <script src="../angular.min.js"></script>
     <script>
     var main = angular.module("main", []);
     main.controller("ExampleController",
@@ -48,6 +48,10 @@
         <br />
         <p>{{text}}</p>
         <p>{{zero}}</p>
+    </div>
+    <div class="notes">
+        <p>如果某個元件的狀態有變──用戶通常可以改變該元件的內容，例如 <code>input</code> 或 <code>select</code>──<code>ng-change</code> 就會執行指定的行動。</p>
+        <p>以 <code>mycont</code> 控制器為例，<code>ng-change</code> 裡面的 <code>$scope.binloop</code> 函式就會偵測 <code>$scope.text</code> 的長度。如果長度是偶數就加上 1 這個字，否則就加上 0。</p>
     </div>
 </body>
 </html>
