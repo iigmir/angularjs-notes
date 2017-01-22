@@ -22,11 +22,20 @@
     </div>
     
     <div class="notes">
-    <p>這個頁面只有定義 <code>ng-model</code>，再透過大括弧把定義的 <code>ng-model</code> 表現出來。</p>
-        <ul>
-            <li>要用兩個大括弧顯示字串的話，請不要忘記用上雙引號：如同原生的 JavaScript，沒有雙引號的字串是變數。</li>
+        <p>這個頁面只有定義 <code>ng-model</code>，再透過大括弧把定義的 <code>ng-model</code> 表現出來。</p>
+        <p>節錄一段程式碼：</p>
+        <pre>
+&lt;input type="text" ng-model="greet_names" placeholder="輸入名字" />
+&lt;h1>{{ greet_names || "佐藤" } }&lt;/h1>
+</pre>
+        <p>這段小程式碼有些重點：</p>
+        <ol>
+            <li>Angular 的重點就是 <code>ng-model</code> 與其他元件的互動。</li>
+            <li>Angular 的行動有賴雙大括弧、以及各種 <code>ng-*</code> 屬性的助力。</li>
             <li><code>||</code>：如果無法獲得 <code>ng-model</code> 的值，就可以預先顯示 <code>||</code> 後面的字串。</li>
-        </ul>
+            <li>要用兩個大括弧顯示字串的話，請不要忘記像<code>"佐藤"</code>那樣用上雙引號：如同原生的 JavaScript，沒有雙引號的字串是變數。</li>
+        </ol>
+        
     </div>
 </body>
 </html>

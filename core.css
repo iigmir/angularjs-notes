@@ -1,6 +1,15 @@
 body,body * {margin:0;padding:0;}
 body,body > div {padding:10px;}
 
+pre
+{
+    margin: 10px;
+    padding: 10px;
+    color: #00FF00;
+    background-color:#000000;
+    font-family:"Lucida Console",monospace;
+}
+
 .demos,.pract,.notes
 {
     width:720px;
