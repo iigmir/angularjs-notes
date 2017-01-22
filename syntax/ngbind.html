@@ -3,15 +3,16 @@
 <head>
     <meta charset=utf-8 />
     <title>ng-bind</title>
-    <link rel="stylesheet" href="core.css" />
-    <script src="angular.min.js"></script>
+    <link rel="stylesheet" href="../core.css" />
+    <script src="../angular.min.js"></script>
     <script>
     var main = angular.module("main", []);
     main.controller("example",
     function($scope)
     {
-        $scope.name = 'Anna';
-        $scope.crte = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+        $scope.name = "Anna";
+        $scope.crte = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+        $scope.desc = "Enter some text: ";
     });
     </script>
 </head>
@@ -22,13 +23,16 @@
     </div>
     <div ng-controller="example" class="pract">
         <p ng-bind="crte">Javascript currently unavailable</p>
-        <p>如果要測試效果，請停用 JavaScript。</p>
+        <p>如果要測試效果，<a target="_blank" href="ngbind.html">請另開一個停用 JavaScript 的頁籤</a>。</p>
+        
+        <span ng-bind="desc"></span><input type="text" ng-model="disp"><br>
+        <span ng-bind="disp"></span>
     </div>
     <div class="notes">
+    <p>ng-bind 就像是寫在 HTML 裡面的大括弧。但考慮到要是瀏覽器停用 JavaScript 的話，雙大括弧就會「原形畢露」，所以會有人用 <code>ng-bind</code> 載入控制器裡面的變數。如果碰上瀏覽器停用 JavaScript──這意味著 <code>ng-bind</code> 失效──瀏覽器就會載入原本寫在該元件的內容。就像 <code>p ng-bind="crte"</code> 那樣。</p>
         <ul>
-            <li>ng-bind 就等於元件內的大括弧。</li>
             <li>把綁定的變數放在 ng-bind 裡面，效果和放在元件內的大括弧一樣。</li>
-            <li>如果要測試效果，請使用 <a href="http://chrispederick.com/work/web-developer/">Web Developer</a> 套件裡面的「停用 JavaScript」。</li>
+            <li>如果要測試效果，請使用 <a target="_blank" href="http://chrispederick.com/work/web-developer/">Web Developer</a> 套件裡面的「停用 JavaScript」。</li>
         </ul>
     </div>
 </body>
