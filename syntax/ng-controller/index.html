@@ -3,7 +3,8 @@
 <head>
     <meta charset=utf-8 />
     <title>ng-controller</title>
-    <script src="../angular.min.js"></script>
+    <link rel="stylesheet" href="../../core.css" />
+    <script src="../../angular.min.js"></script>
     <script>
     angular.module("main", []).controller("mycont",
     function($scope)
@@ -17,16 +18,28 @@
     </script>
 </head>
 <body>
-    <div ng-controller="mycont">
+    <div ng-controller="mycont" class="pract">
+    <pre>
+angular.module("main", []).controller("mycont",
+function($scope)
+{
+    $scope.kiminonawa =
+    {
+        your : "My name is",
+        name : "Misumi"
+    };
+});
+    </pre>
         <p>{{ kiminonawa.your }}</p>
         <p>{{ kiminonawa.name }}</p>
     </div>
-    <hr />
-    <div>
+
+    <div class="notes">
         <p>1.0.7 與 1.6.1 差得非常多，多到整個需要重寫的地步。</p>
         <p>這是<a href="http://ithelp.ithome.com.tw/articles/10133017"> iT 邦幫忙</a>的<a href="http://jsbin.com/ogecuw/2/edit?html,js,output">程式碼</a>：</p>
         <pre>
-    &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js">&lt;/script>
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js">
+    &lt;/script>
     &lt;script>
         function TodoCrtl($scope)
         {
@@ -34,8 +47,7 @@
         }
     &lt;/script>
     &lt;!-- 省略…… -->
-    &lt;p ng-controller="TodoCrtl">My name is { { name } }!&lt;/p>
-        </pre>
+    &lt;p ng-controller="TodoCrtl">My name is { { name } }!&lt;/p></pre>
         <p>（請把兩個打大括號中間的空白取消掉……）</p>
         <p>在 1.0.7，這樣寫會出現「My name is Anna」──但如果在 1.6.1 這麼寫，Angular 會給你 <a href="https://docs.angularjs.org/error/$controller/ctrlreg?p0=TodoCrtl">Error: $controller:ctrlreg</a> 的錯誤。</p>
         <p>而 <a href="https://hairui219.gitbooks.io/learning_angular/content/zh/chapter04_3.html">hairui219</a> 是這麼寫的：</p>
@@ -50,35 +62,21 @@
         });
     &lt;/script>
     &lt;!-- 省略…… -->
-    &lt;h1>{ {data.message + " World!"} }&lt;/h1>
-        </pre>
+    &lt;h1>{ {data.message + " World!"} }&lt;/h1></pre>
         <p>這麼寫，在 1.6.1 就可以過了。</p>
         <p>好吧，也許是為了逼開發者寫對的程式碼吧……</p>
         <a href="https://forums.asp.net/t/2112068.aspx?angular+js+controller+not+working">Ref: angular js controller not working</a>
     </div>
-    <hr />
-    <div>
-        <p>幾天後看了一下、想了一下，發現 <code>var App = angular.module("App", []);</code> 不是我想的語法鹽。</p>
-        <p><code>angular.module</code> 的意思是載入 <code>angular</code> 模組。</p>
-        <p>接著，建立一個稱為 <code>App</code> 的模組，放在一個稱為 <code>App</code> 的變數裡面。</p>
-        <p>最後，透過 <code>ng-app="App"</code> 嵌入、並初始化 <code>App</code> 模組。</p>
-        <p>似乎一個網頁只能有一個 <code>angular.module</code></p>
-        <p>不知道載入模組是不是必要的，不過看來載入模組對於日後維護比較有利。</p>
-    </div>
-    <hr />
-    <div>
-        <p>本頁的程式碼：</p>
-        <pre>
-    angular.module("main", []).controller("mycont",
-    function($scope)
-    {
-        $scope.kiminonawa =
-        {
-            your : "My name is",
-            name : "Misumi"
-        };
-    });
-        </pre>
+    <div class="notes">
+        <p>幾天後看了一下、想了一下，發現 <code>var App = angular.module("App", []);</code> 不是我想的語法鹽：</p>
+        
+        <ol>
+            <li><code>angular.module</code> 的意思是載入 <code>angular</code> 模組。</li>
+            <li>接著，建立一個稱為 <code>App</code> 的模組，放在一個稱為 <code>App</code> 的變數裡面。</li>
+            <li>最後，透過 <code>ng-app="App"</code> 嵌入、並初始化 <code>App</code> 模組。</li>
+        </ol>
+        <p>似乎一個網頁只能有一個 <code>angular.module</code>，也不知道載入模組是不是必要的。不過看來載入模組對於日後維護比較有利。</p>
+        <p>可以點開<a target="_blink" href="ngcont.html"> function 寫法</a>與<a target="_blink" href="ngcont2.html"> controller 寫法</a>對照看看。</p>
     </div>
 </body>
 </html>

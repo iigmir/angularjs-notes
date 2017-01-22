@@ -26,11 +26,12 @@
     <div ng-controller="lovelivesong" class="pract">
         <div>
             <p>LoveLive! 裡面有 {{ subunit.length }} 個小隊</p>
-            <ul> <li ng-repeat="u in subunit"> {{ u.name }} 是 {{ u.memberof }} 的小隊 </li> </ul>
+            <ul> <li ng-repeat="u in subunit">{{ u.name }} 是 {{ u.memberof }} 的小隊 </li> </ul>
         </div>
     </div>
     <div class="notes">
         <ul>
+            <li>預先定義一個陣列物件。陣列裡面可以用任何東西，用 JSON 比較方便命名與讀取。</li>
             <li>如果你要在清單裡面做 ng-repeat 的話，請記得是要在 li 元素做 ng-repeat。在 ul（ol）元素做會讓 li 元素迴圈於 1。</li>
             <li>Ref: <a href="https://stackoverflow.com/questions/26747668/bullet-list-with-alphabet-in-ng-repeat">Bullet list with alphabet in ng-repeat</a></li>
         </ul>
