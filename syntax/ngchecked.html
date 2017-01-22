@@ -3,23 +3,40 @@
 <head>
     <meta charset=utf-8 />
     <title>ng-checked</title>
-    <link rel="stylesheet" href="core.css" />
-    <script src="angular.min.js"></script>
+    <link rel="stylesheet" href="../core.css" />
+    <script src="../angular.min.js"></script>
     <script>
     var main = angular.module("main", []);
     main.controller("pract",
     function($scope)
     {
-        $scope.kiminonawa = [{name:"Taki"},{name : "Mitsuha"},{name : "Miki",}];
+        $scope.kiminonawa = [
+            {name : "立花瀧"},
+            {name : "宮水三葉"},
+            {name : "奥寺ミキ"},
+            {name : "藤井司"}];
     });
     </script>
 </head>
 <body>
     <div ng-controller="pract" class="pract">
-        Check me to check both: <input type="checkbox" ng-model="master">
+        <label> Check checkbox to check following: <input type="checkbox" ng-model="master"> </label>
         <br/>
-        <p ng-repeat="checkText in kiminonawa">
-        <input type="checkbox" ng-checked="master"> {{checkText.name}} </p>
+        <label ng-repeat="checkText in kiminonawa">
+            <input type="checkbox" ng-checked="master"> {{checkText.name}}
+            <br />
+        </label>
+        <br />
+        <input type="checkbox" ng-checked="master"> checked value
+    </div>
+    <div class="notes">
+        <p></p>
+        <ol>
+            <li>預先在控制器裡面寫好變數：個別選項寫成 JSON 形式，並放在陣列裡面。</li>
+            <li>再另外創建一個選項，指定該選項的 <code>ng-model</code>。</li>
+            <li>用 <code>ng-repeat</code> 把該變數的內容全部列出來。另外，因為所有選項都要受上述的 <code>ng-model</code> 影響，所以在選項內還要寫入 <code>ng-checked</code>，值就是該 model 的名稱。</li>
+            <li>現在所有的選項都有 <code>ng-repeat</code> 的屬性了：當 <code>ng-model</code> 被句選以後，所有透過 <code>ng-repeat</code> 與該 model 綁定的選項都會被句選。</li>
+        </ol>
     </div>
 </body>
 </html>

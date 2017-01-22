@@ -3,8 +3,8 @@
 <head>
     <meta charset=utf-8 />
     <title>ng-click</title>
-    <link rel="stylesheet" href="core.css" />
-    <script src="angular.min.js"></script>
+    <link rel="stylesheet" href="../core.css" />
+    <script src="../angular.min.js"></script>
     <script>
     angular.module("main", []).controller("emeny_controller",
     function($scope)
@@ -14,26 +14,28 @@
             $scope.price = 100;
         };
         
-        $scope.hidari = function () { $scope.command = "←"; };
-        $scope.migi   = function () { $scope.command = "→"; };
-        $scope.aeim   = function () { $scope.command = "Ａ"; };
-        $scope.beei   = function () { $scope.command = "Ｂ"; };
+        $scope.command;
+        $scope.direct = function (dr_input)
+        {
+            $scope.command = dr_input;
+        };
     });
     </script>
 </head>
-<body>
-    <div ng-controller="emeny_controller">
-        <div class="demos">
-            <input type="button" value="選擇100元" ng-click="action()">
-            <p>目前 {{ price | number}} 元</p>
-        </div>
-        <div class="pract">
-            <input type="button" value="ひだり" ng-click="hidari()">
-            <input type="button" value="みぎ"   ng-click="migi()">
-            <input type="button" value="Ａ"     ng-click="aeim()">
-            <input type="button" value="Ｂ"     ng-click="beei()">
-            <p>俺のターン！{{ command }}！</p>
-        </div>
+<body ng-controller="emeny_controller">
+    <div class="demos">
+        <input type="button" value="選擇100元" ng-click="action()">
+        <p>目前 {{ price | number}} 元</p>
+    </div>
+    <div class="pract">
+        <input type="button" value="ひだり" ng-click="direct('←')">
+        <input type="button" value="みぎ"   ng-click="direct('→')">
+        <input type="button" value="Ａ"     ng-click="direct('Ａ')">
+        <input type="button" value="Ｂ"     ng-click="direct('Ｂ')">
+        <p ng-click="direct('')">俺のターン！{{ command }}！</p>
+    </div>
+    <div class="notes">
+        <p><code>ng-click</code>：每當按下含有該屬性的元件時，該元件就會執行指定的函式。</p>
     </div>
 </body>
 </html>
