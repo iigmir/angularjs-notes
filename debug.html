@@ -34,7 +34,7 @@
             expand_1 : "旁邊有三角形的英文字母",
             zero_money:"https://developers.google.com/web/tools/chrome-devtools/console/command-line-reference#0_-_4"
         }];
-        $scope.browser = $scope.firefox;
+        //$scope.browser = $scope.firefox;
     });
     </script>
 </head>
@@ -44,7 +44,9 @@
         <h1>{{kiminonawa.your}} {{ debug_console }}</h1>
     </div>
     <div class="notes" ng-controller="devtool" >
-        <select ng-model="browser" ng-options="browser_noun.name for browser_noun in browser_noun">
+        <select ng-model="browser"
+        ng-init="browser=browser_noun[0]"
+        ng-options="browser_noun.name for browser_noun in browser_noun">
         </select>
         <p>如果我想檢查控制器裡面的變數或物件，怎麼辦？開啟 F12 的開發者工具，是很直覺的答案。</p>
         <p>但是，該打什麼指令才好？為此困惑的時候，就該去上網找答案。</p>
