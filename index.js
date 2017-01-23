@@ -39,6 +39,7 @@ ang.controller('webpage', function($scope)
         { name: "ng-style", url: "syntax/ngstyle.html" },
         { name: "Dependency Injection", url: "inject.html" },
         { name: "Directive", url: "directive.html" },
+        { name: "Debug and Develop", url: "debug.html" },
         { name: "實做：民國西元換算器", url: "practice1.html" }
     ];
     $scope.webpage_pos = $scope.pract[0];
