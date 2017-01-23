@@ -19,26 +19,22 @@
     main.controller("devtool",
     function($scope)
     {
-        $scope.browser = $scope.firefox;
-        $scope.firefox =
-        {
+        $scope.browser_noun = [{
             name:"firefox",
             console : "主控台",
             inspect : "檢測元素",
             inspector : "檢測器",
             expand_1 : "旁邊有向左箭頭的 Object",
             zero_money:"https://developer.mozilla.org/en-US/docs/Tools/Web_Console/Helpers#The_commands"
-        };
-        $scope.chrome =
-        {
+        },{
             name:"chrome",
             console : " Console ",
             inspect : "檢查",
             inspector : " Elements ",
             expand_1 : "旁邊有三角形的英文字母",
             zero_money:"https://developers.google.com/web/tools/chrome-devtools/console/command-line-reference#0_-_4"
-        };
-        
+        }];
+        $scope.browser = $scope.firefox;
     });
     </script>
 </head>
@@ -47,10 +43,8 @@
         <input type="text" ng-model="debug_console" placeholder="請輸入字串……" />
         <h1>{{kiminonawa.your}} {{ debug_console }}</h1>
     </div>
-    <div class="notes" ng-controller="devtool" ng-model="browser">
-        <select>
-            <option value="firefox">{{firefox.name}}</option>
-            <option value="chrome">{{chrome.name}}</option>
+    <div class="notes" ng-controller="devtool" >
+        <select ng-model="browser" ng-options="browser_noun.name for browser_noun in browser_noun">
         </select>
         <p>如果我想檢查控制器裡面的變數或物件，怎麼辦？開啟 F12 的開發者工具，是很直覺的答案。</p>
         <p>但是，該打什麼指令才好？為此困惑的時候，就該去上網找答案。</p>
