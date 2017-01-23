@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>Console</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var main = angular.module("main", []);
+    main.controller("example",
+    function($scope)
+    {
+        $scope.kiminonawa =
+        {
+            your : "My name is",
+            name : "Mitsuha"
+        };
+    });
+    main.controller("devtool",
+    function($scope)
+    {
+        $scope.firefox =
+        {
+            console : "主控台",
+            inspect : "檢測元素",
+            inspector : "檢測器",
+            expand_1 : "旁邊有向左箭頭的 Object",
+            zero_money:"https://developer.mozilla.org/en-US/docs/Tools/Web_Console/Helpers#The_commands"
+        };
+        $scope.chrome =
+        {
+            console : " Console ",
+            inspect : "檢查",
+            inspector : " Elements ",
+            expand_1 : "旁邊有三角形的英文字母",
+            zero_money:"https://developers.google.com/web/tools/chrome-devtools/console/command-line-reference#0_-_4"
+        };
+    });
+    </script>
+</head>
+<body>
+    <div class="pract" ng-controller="example">
+        <input type="text" ng-model="debug_console" placeholder="請輸入字串……" />
+        <h1>{{kiminonawa.your}} {{ debug_console }}</h1>
+    </div>
+    <div class="notes" ng-controller="devtool">
+        
+        <p>如果我想檢查控制器裡面的變數或物件，怎麼辦？開啟 F12 的開發者工具，是很直覺的答案。</p>
+        <p>但是，該打什麼指令才好？為此困惑的時候，就該去上網找答案。</p>
+        <p><a href="http://www.encodedna.com/angularjs/tutorial/debugging-angularjs-app-elements-from-browser-console.htm">還真的給我找到了。</a>雖然我習慣使用 Firefox 開發，但測試後發現是相通的。</p>
+        <p>在此簡單講解一遍：</p>
+        <ol>
+            <li>首先，試著讓開發者工具選中藍色的 div。它的控制器是 example。有兩種方法可用：
+                <ol>
+                    <li>右鍵點選藍色區塊，點選inspect。</li>
+                    <li>打開網頁主控台，然後令inspector選到藍色的 div。該 div 的那行的顏色應該與其他行不一樣。</li>
+                </ol>
+            </li>
+            <li>進入console</li>
+            <li>輸入 <code>angular.element($0).scope()</code>。應該要出現以 <code>$$ChildScope</code> 為開頭的物件。</li>
+            <li>可以點選expand_1以看到所有內容</li>
+            <li>輸入 <code>angular.element($0).scope().kiminonawa.name</code>。應該要出現 <code>"Mitsuha"</code> 字串。</li>
+            <li>藍色的 div 有一個輸入「請輸入字串……」的文字輸入欄位。在那裡隨便打。如果不知道要打什麼，就打<code>王小明</code>吧。</li>
+            <li>回到開發工具。選中藍色的 div，再輸入 <code>angular.element($0).scope().debug_console</code>。應該要出現剛剛輸入的字串。例如：<code>"王小明"</code>。</li>
+        </ol>
+        <hr />
+        <p>那剛剛輸入的這些東西是什麼？</p>
+        <ul>
+            <li><code><a href="https://docs.angularjs.org/api/ng/function/angular.element">angular.element</a></code>：這指令是函式，它能指定特定的元件。</li>
+            <li><code>angular.element(<a href="zero_money">$0</a>)</code>：這個符號能會指定選中的元素。以第三步為例，就是藍色的 div。</li>
+            <li><code>angular.element($0).<a href="https://docs.angularjs.org/guide/scope">scope()</a>.kiminonawa.name</code>：<code>scope</code> 是選中元素內，控制器的包含的物件。<code>kiminonawa.name</code> 是我創立的 <code>kiminonawa</code> 物件：
+            <pre>
+$scope.kiminonawa =
+{
+    your : "My name is",
+    name : "Mitsuha"
+};</pre>
+            </li>
+            <li><code>angular.element($0).scope().<strong>debug_console</strong></code>：<code>debug_console</code> 是我創立的 <a href="https://docs.angularjs.org/api/ng/directive/ngModel">ng-model directive</a>，它會和 <code>input</code>、<code>select</code>、<code>textarea</code> 這三個元件綁定。</li>
+        </ul>
+    </div>
+</body>
+</html>
