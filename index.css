@@ -37,3 +37,18 @@ iframe
     overflow-y:scroll;
     overflow-x:hidden;
 }
+
+@media (max-device-width: 1200px)
+{
+    header *
+    {
+        display:block;
+        margin:0 auto;
+        text-align:center;
+    }
+    nav
+    {
+        margin:0;
+        width:100%;
+    }
+}
