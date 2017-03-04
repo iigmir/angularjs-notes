@@ -6,23 +6,22 @@ body
 }
 header{padding-bottom:10px;}
 header *{display:inline-block;}
-header img {width:300px}
+header img {max-width:300px}
 header h1
 {
     margin:0;
-    font-size:70px;
+    font-size:5rem;
     padding-left:10px;
 }
 
 nav
 {
     float:left;
-    width:240px;
-    height:540px;
-    margin-right:10px;
+    width:20vw;
+    height:70vh;
+    margin:1rem;
     overflow-y:scroll;
     overflow-x:hidden;
-    
     color:#234B9A;
 }
 nav h2{color:#000000;}
@@ -32,7 +31,7 @@ nav a:hover,nav li:hover,nav li:hover a{color:#0096AB;background-color:#FFFFFF;}
 iframe
 {
     width:840px;
-    height:540px;
+    height:70vh;
     border: 0;
     overflow-y:scroll;
     overflow-x:hidden;
@@ -49,6 +48,17 @@ iframe
     nav
     {
         margin:0;
+        margin-bottom:1rem;
         width:100%;
+    }
+    iframe{width:90vw;}
+}
+@media (max-device-width: 539px)
+{
+    header h1
+    {
+        margin:0;
+        font-size:2rem;
+        padding-left:0;
     }
 }
