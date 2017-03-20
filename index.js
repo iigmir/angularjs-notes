@@ -40,7 +40,9 @@ ang.controller('webpage', function($scope)
         { name: "Dependency Injection", url: "inject.html" },
         { name: "Directive", url: "directive.html" },
         { name: "Debug and Develop", url: "debug.html" },
-        { name: "實做：民國西元換算器", url: "practice1.html" }
+        { name: "實做：民國西元換算器", url: "practice1.html" },
+        { name: "實做：猜謎小遊戲", url: "practice2.html" },
+        { name: "實做：面試問題", url: "practice3.html" }
     ];
     $scope.webpage_pos = $scope.pract[0];
     $scope.webpage_load = function( ipt )

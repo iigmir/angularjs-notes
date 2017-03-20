@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head>
+    <meta charset=utf-8 />
+    <title>實做：面試問題</title>
+    <link rel="stylesheet" href="core.css" />
+    <script src="angular.min.js"></script>
+    <script>
+    var main = angular.module("main", []);
+    main.controller("demos",function($scope){});
+    
+    main.controller("pract",
+    function($scope)
+    {
+        $scope.result = "";
+        $scope.clicked_behavior = function()
+        {
+            $scope.result = $scope.inputed;
+        }
+    });
+    
+    main.controller("pract2",
+    function($scope)
+    {
+        $scope.result = "";
+        $scope.clicked_behavior = function()
+        {
+            $scope.result = $scope.inputed;
+        }
+    });
+    </script>
+</head>
+<body>
+    <div class="pract" ng-controller="pract">
+        <p>目標：給定 <code>input</code>、<code>button</code>、<code>span</code> 這三個元素：當用戶從 <code>input</code> 元素輸入資料以後、按下 <code>button</code> 元素，<code>span</code> 會獲取 <code>input</code> 元素的輸入值。</p>
+        <input type="text" ng-model="inputed" placeholder="input me!">
+        <button ng-click="clicked_behavior()">Get value!</button>
+        <p>使用 大括弧 的情形： <span>{{result}}</span> </p>
+        <p>使用 <code>ng-bind</code> 的情形： <span ng-bind="result"></span></p>
+    </div>
+    <div class="notes">
+        <p>當面試出了這題，說不緊張是騙人的。不過還是要答。</p>
+        <p>首先我想到 <code>input</code> 只要與 <code>ng-model</code> 綁定，就能直接用 <code>ng-model</code> 顯示該結果。接著我會想到：如果需要先按下 <code>button</code> 元素才能得出結果，那就是說不能直接用 <code>ng-model</code> 了。</p>
+        <p>──想起之前做的<a href="https://codepen.io/iigmir/pen/XMzbzE">猜謎遊戲</a>就想到：做個暫存值，再用函式執行如何？<br/>於是我就這麼寫了。</p>
+        <br/>
+        <ol>
+            <li>在面試等待面試官的答案、還有回家實做的時候，心裡非常煎熬，深怕完全錯誤。不過最後竟然都成功了。</li>
+            <li>我一直有種奇怪的感覺：雖然我靠自己翻譯了 MDN 的<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Closures">閉包</a>、卻覺得自己不知道閉包是什麼……可是看了自己寫的程式碼，卻又發現有閉包的精神。如同那個十分矛盾的我。</li>
+            <li>如果有出程式題，我建議把 <code>{}</code> 或是相類的語法寫進來。這對程式題很有幫助。</li>
+        </ol>
+        <p><br/></p>
+    </div>
+    <script>
+    
+    </script>
+</body>
+</html>
