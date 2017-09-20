@@ -62,3 +62,44 @@ iframe
         padding-left:0;
     }
 }
+
+/* Closure notice */
+#closure
+{
+    /* display:none; */
+    position:absolute;
+    background-color:rgba(0,0,0,0.5);
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    display: -webkit-flex;
+    display:         flex;
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-justify-content: center;
+                justify-content: center;
+}
+#closure section
+{
+    margin:1rem;
+    padding:1rem;
+    border-radius:1rem;
+    max-width:540px;
+    background-color:#FFF;
+}
+
+#closure h2
+{
+    text-align:center;
+}
+
+#closure .btn
+{
+    background-color:aqua;
+    border-radius:5px;
+    padding:0.5rem;
+    display:block;
+    margin:auto;
+}
+

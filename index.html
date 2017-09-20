@@ -14,6 +14,24 @@
         請選用支援 JavaScript 的瀏覽器、或開啟 JavaScript。
         如果已開啟 JavaScript，請重新整理。
     </noscript>
+    <div ng-controller="closure">
+        <article id="closure" ng-show="notify">
+            <section>
+                <h2>本專案已停止維護！</h2>
+                <small hidden>いまはいまの楽しさで はしゃぎたいなみんなと さようならへさよなら なんで無茶苦茶を 言いたくなった…</small>
+                <p>Angular 1 是我初次接觸的 JavaScript 框架。它標榜的 MVC 架構啟發我、並讓我提升到另一個境界。</p>
+                <p>但是，大家終究會拋棄 Angular 1。而 Google 力推的 <a href="https://angular.io" target="_blank">Angular 2</a> 也和 Angular 1 相差甚大。尤其，Angular 2 使用需要編譯的 TypeScript。</p>
+                <p>這使我考慮放棄 Angular 2、並轉向其他框架。</p>
+                <p>不久，我發現語法和 Angular 1 類似的 <a href="https://vuejs.org" target="_blank">Vue</a>，但它更為靈活而簡潔。如果想考慮其他框架的話，Vue 會是個好選擇。</p>
+                <p>總之，因為 Angular 1 已經要走向歷史，所以這個專案以後不會再維護了。</p>
+                <p>有緣再會。</p>
+                <button ng-click="close_notify()" class="btn">
+                    繼續瀏覽
+                </button>
+                <p></p>
+            </section>
+        </article>
+    </div>
     <header id="intro" ng-controller="intro">
         <img
         ng-init = "imgsrc=logo.wiki+logo.now"

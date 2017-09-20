@@ -1,4 +1,14 @@
 var ang = angular.module("main", []);
+
+ang.controller('closure', function($scope)
+{
+    $scope.notify = true;
+    $scope.close_notify = function()
+    {
+        $scope.notify = false;
+    }
+});
+
 ang.controller('intro', function($scope)
 {
     $scope.logo =
